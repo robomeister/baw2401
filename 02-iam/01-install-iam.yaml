@@ -1,0 +1,25 @@
+apiVersion: operator.ibm.com/v3
+kind: CommonService
+metadata:
+  namespace: baw
+  name: common-service
+spec:
+  license:
+    accept: true 
+  operatorNamespace: baw
+  servicesNamespace: baw
+  size: small
+  storageClass: ocs-storagecluster-ceph-rbd
+---
+apiVersion: operator.ibm.com/v1alpha1
+kind: OperandRequest
+metadata:
+  namespace: baw
+  name: iaf-system-common-service
+spec:
+  requests:
+  - operands:
+      - name: ibm-platformui-operator
+      - name: ibm-im-operator
+    registry: common-service
+    registryNamespace: baw

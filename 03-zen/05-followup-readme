@@ -1,0 +1,10 @@
+##These are for the zen hostname
+#NOTE:  YOU **MUST** update the zen operator CR to rotate the custom-tls-secret-x value, or the cert will not update!
+#oc edit zenservice
+#oc describe zenservice
+#wait a while
+#oc delete pod -l name=ibm-zen-operator --> probably don't need to do this as it should reconcile on its own
+
+
+#oc delete pod -l component=usermgmt
+#oc delete pod -l app.kubernetes.io/component=ibm-nginx
